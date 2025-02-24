@@ -4,49 +4,37 @@ const FullName = () => {
     const [first, setFirst] = useState('');
     const [last, setLast] = useState('');
     const [fullName, setFullName] = useState('');
-    const [firstError, setFirstError] = useState('');
-    const [lastError, setLastError] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!firstError && !lastError) {
-            setFullName(first + " " + last);
-        }
+        setFullName(first + " " + last);
     }
 
-    const handleFirstNameChange = (e) => {
-        const value = e.target.value;
-        if (value.split('').every(char => char.toLowerCase() !== char.toUpperCase())) {
-            setFirst(value);
-            setFirstError('');
-        } else {
-            setFirstError('First name should contain only alphabets.');
-        }
-    }
+    // const handleFirstNameChange = (e) => {
+    //     const value = e.target.value;
+    //     if (/^[a-zA-Z]*$/.test(value)) {
+    //         setFirst(value);
+    //     }
+    // }
 
-    const handleLastNameChange = (e) => {
-        const value = e.target.value;
-        if (value.split('').every(char => char.toLowerCase() !== char.toUpperCase())) {
-            setLast(value);
-            setLastError('');
-        } else {
-            setLastError('Last name should contain only alphabets.');
-        }
-    }
+    // const handleLastNameChange = (e) => {
+    //     const value = e.target.value;
+    //     if (/^[a-zA-Z]*$/.test(value)) {
+    //         setLast(value);
+    //     }
+    // }
 
     return (
         <>
         <form onSubmit={handleSubmit}>
             <h2>Full Name Display</h2>
             <label htmlFor="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" value={first} onChange={handleFirstNameChange} required />
-            {firstError && <p style={{color: 'red'}}>{firstError}</p>}
+            <input type="text"  pattern="[A-Za-z]*" id="firstName" name="firstName" value={first} onChange={(e) => setFirst(e.target.value)} required />
             <br/>
             <label htmlFor="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" value={last} onChange={handleLastNameChange} required />
-            {lastError && <p style={{color: 'red'}}>{lastError}</p>}
+            <input type="text"  pattern="[A-Za-z]*" id="lastName" name="lastName" value={last} onChange={(e) => setLast(e.target.value)} required />
             <br/>
-            <button type="submit" disabled={firstError || lastError}>Submit</button>
+            <button type="submit">Submit</button>
         </form>
         {
             fullName && <p>Full Name: {fullName}</p>
