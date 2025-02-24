@@ -29,10 +29,10 @@ const FullName = () => {
         <form onSubmit={handleSubmit}>
             <h2>Full Name Display</h2>
             <label htmlFor="firstName">First Name:</label>
-            <input type="text"  pattern="[A-Za-z]*" id="firstName" name="firstName" value={first} onChange={(e) => setFirst(e.target.value)} required />
+            <input type="text" id="firstName" name="firstName" value={first} onChange={(e) => setFirst(e.target.value)} required />
             <br/>
             <label htmlFor="lastName">Last Name:</label>
-            <input type="text"  pattern="[A-Za-z]*" id="lastName" name="lastName" value={last} onChange={(e) => setLast(e.target.value)} required />
+            <input type="text" id="lastName" name="lastName" value={last} onChange={(e) => setLast(e.target.value)} required />
             <br/>
             <button type="submit">Submit</button>
         </form>
